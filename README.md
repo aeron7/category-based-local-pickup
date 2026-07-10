@@ -38,7 +38,7 @@ Tick **Enable debug logging** on the settings screen to record each decision (ca
 Plain PHP, no build step.
 
 ```
-category-based-local-pickup-for-woocommerce.php   Bootstrap, constants, HPOS declaration
+category-based-local-pickup.php   Bootstrap, constants, HPOS declaration
 includes/class-cblp-locations.php                 Reads native pickup locations
 includes/class-cblp-gating.php                     woocommerce_package_rates filter + logging
 includes/class-cblp-admin.php                      Settings screen (WooCommerce → Category Pickup)

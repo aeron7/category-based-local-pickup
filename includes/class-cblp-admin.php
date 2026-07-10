@@ -50,8 +50,8 @@ class CBLP_Admin {
 	public function add_menu() {
 		add_submenu_page(
 			'woocommerce',
-			__( 'Category Based Local Pickup', 'category-based-local-pickup-for-woocommerce' ),
-			__( 'Category Pickup', 'category-based-local-pickup-for-woocommerce' ),
+			__( 'Category Based Local Pickup', 'category-based-local-pickup' ),
+			__( 'Category Pickup', 'category-based-local-pickup' ),
 			'manage_woocommerce',
 			'cblp-settings',
 			array( $this, 'render' )
@@ -83,7 +83,7 @@ class CBLP_Admin {
 			return;
 		}
 		if ( ! current_user_can( 'manage_woocommerce' ) ) {
-			wp_die( esc_html__( 'You are not allowed to do that.', 'category-based-local-pickup-for-woocommerce' ) );
+			wp_die( esc_html__( 'You are not allowed to do that.', 'category-based-local-pickup' ) );
 		}
 		check_admin_referer( self::NONCE );
 
@@ -125,10 +125,10 @@ class CBLP_Admin {
 		);
 		?>
 		<div class="wrap">
-			<h1><?php esc_html_e( 'Category Based Local Pickup', 'category-based-local-pickup-for-woocommerce' ); ?></h1>
+			<h1><?php esc_html_e( 'Category Based Local Pickup', 'category-based-local-pickup' ); ?></h1>
 
 			<?php if ( get_transient( 'cblp_saved_notice' ) ) : ?>
-				<div class="notice notice-success is-dismissible"><p><?php esc_html_e( 'Pickup category rules saved.', 'category-based-local-pickup-for-woocommerce' ); ?></p></div>
+				<div class="notice notice-success is-dismissible"><p><?php esc_html_e( 'Pickup category rules saved.', 'category-based-local-pickup' ); ?></p></div>
 				<?php delete_transient( 'cblp_saved_notice' ); ?>
 			<?php endif; ?>
 
@@ -137,7 +137,7 @@ class CBLP_Admin {
 					<?php
 					printf(
 						/* translators: %s: link to WooCommerce shipping settings */
-						wp_kses_post( __( 'WooCommerce <strong>Local Pickup</strong> is currently disabled. Enable it under <a href="%s">WooCommerce → Settings → Shipping → Local pickup</a> and add at least one location.', 'category-based-local-pickup-for-woocommerce' ) ),
+						wp_kses_post( __( 'WooCommerce <strong>Local Pickup</strong> is currently disabled. Enable it under <a href="%s">WooCommerce → Settings → Shipping → Local pickup</a> and add at least one location.', 'category-based-local-pickup' ) ),
 						esc_url( admin_url( 'admin.php?page=wc-settings&tab=shipping&section=pickup_location' ) )
 					);
 					?>
@@ -145,21 +145,21 @@ class CBLP_Admin {
 			<?php endif; ?>
 
 			<p class="description">
-				<?php esc_html_e( 'For each pickup location, choose which product categories it can fulfil. A customer is offered a pickup location only when their cart items match its rule. Leave a location blank to always show it.', 'category-based-local-pickup-for-woocommerce' ); ?>
+				<?php esc_html_e( 'For each pickup location, choose which product categories it can fulfil. A customer is offered a pickup location only when their cart items match its rule. Leave a location blank to always show it.', 'category-based-local-pickup' ); ?>
 			</p>
 
 			<form method="post">
 				<?php wp_nonce_field( self::NONCE ); ?>
 
 				<?php if ( empty( $locations ) ) : ?>
-					<p><em><?php esc_html_e( 'No Local Pickup locations found yet. Add them in WooCommerce → Settings → Shipping → Local pickup first, then reload this page.', 'category-based-local-pickup-for-woocommerce' ); ?></em></p>
+					<p><em><?php esc_html_e( 'No Local Pickup locations found yet. Add them in WooCommerce → Settings → Shipping → Local pickup first, then reload this page.', 'category-based-local-pickup' ); ?></em></p>
 				<?php else : ?>
 					<table class="widefat striped" style="max-width:900px;margin-top:12px;">
 						<thead>
 							<tr>
-								<th style="width:26%"><?php esc_html_e( 'Pickup location', 'category-based-local-pickup-for-woocommerce' ); ?></th>
-								<th><?php esc_html_e( 'Allowed product categories', 'category-based-local-pickup-for-woocommerce' ); ?></th>
-								<th style="width:22%"><?php esc_html_e( 'Cart must match', 'category-based-local-pickup-for-woocommerce' ); ?></th>
+								<th style="width:26%"><?php esc_html_e( 'Pickup location', 'category-based-local-pickup' ); ?></th>
+								<th><?php esc_html_e( 'Allowed product categories', 'category-based-local-pickup' ); ?></th>
+								<th style="width:22%"><?php esc_html_e( 'Cart must match', 'category-based-local-pickup' ); ?></th>
 							</tr>
 						</thead>
 						<tbody>
@@ -172,11 +172,11 @@ class CBLP_Admin {
 								<td>
 									<strong><?php echo esc_html( $loc['name'] ); ?></strong>
 									<?php if ( ! $loc['enabled'] ) : ?>
-										<br><span style="color:#a00;">(<?php esc_html_e( 'disabled in WooCommerce', 'category-based-local-pickup-for-woocommerce' ); ?>)</span>
+										<br><span style="color:#a00;">(<?php esc_html_e( 'disabled in WooCommerce', 'category-based-local-pickup' ); ?>)</span>
 									<?php endif; ?>
 								</td>
 								<td>
-									<select name="cblp[<?php echo esc_attr( $index ); ?>][categories][]" class="cblp-cats" multiple="multiple" data-placeholder="<?php esc_attr_e( 'All categories (no restriction)', 'category-based-local-pickup-for-woocommerce' ); ?>" style="min-width:320px;">
+									<select name="cblp[<?php echo esc_attr( $index ); ?>][categories][]" class="cblp-cats" multiple="multiple" data-placeholder="<?php esc_attr_e( 'All categories (no restriction)', 'category-based-local-pickup' ); ?>" style="min-width:320px;">
 										<?php
 										if ( ! is_wp_error( $cats ) ) {
 											foreach ( $cats as $cat ) {
@@ -193,8 +193,8 @@ class CBLP_Admin {
 									</select>
 								</td>
 								<td>
-									<label><input type="radio" name="cblp[<?php echo esc_attr( $index ); ?>][mode]" value="all" <?php checked( 'any' !== $mode ); ?>> <?php esc_html_e( 'ALL items match', 'category-based-local-pickup-for-woocommerce' ); ?></label><br>
-									<label><input type="radio" name="cblp[<?php echo esc_attr( $index ); ?>][mode]" value="any" <?php checked( 'any' === $mode ); ?>> <?php esc_html_e( 'ANY item matches', 'category-based-local-pickup-for-woocommerce' ); ?></label>
+									<label><input type="radio" name="cblp[<?php echo esc_attr( $index ); ?>][mode]" value="all" <?php checked( 'any' !== $mode ); ?>> <?php esc_html_e( 'ALL items match', 'category-based-local-pickup' ); ?></label><br>
+									<label><input type="radio" name="cblp[<?php echo esc_attr( $index ); ?>][mode]" value="any" <?php checked( 'any' === $mode ); ?>> <?php esc_html_e( 'ANY item matches', 'category-based-local-pickup' ); ?></label>
 								</td>
 							</tr>
 						<?php endforeach; ?>
@@ -205,13 +205,13 @@ class CBLP_Admin {
 				<p style="margin-top:16px;">
 					<label>
 						<input type="checkbox" name="cblp_debug" value="1" <?php checked( $debug ); ?>>
-						<?php esc_html_e( 'Enable debug logging', 'category-based-local-pickup-for-woocommerce' ); ?>
+						<?php esc_html_e( 'Enable debug logging', 'category-based-local-pickup' ); ?>
 					</label>
-					<span class="description"><?php esc_html_e( '(logs each decision to WooCommerce → Status → Logs, source “category-based-local-pickup”)', 'category-based-local-pickup-for-woocommerce' ); ?></span>
+					<span class="description"><?php esc_html_e( '(logs each decision to WooCommerce → Status → Logs, source “category-based-local-pickup”)', 'category-based-local-pickup' ); ?></span>
 				</p>
 
 				<p class="submit">
-					<button type="submit" name="cblp_submit" value="1" class="button button-primary"><?php esc_html_e( 'Save changes', 'category-based-local-pickup-for-woocommerce' ); ?></button>
+					<button type="submit" name="cblp_submit" value="1" class="button button-primary"><?php esc_html_e( 'Save changes', 'category-based-local-pickup' ); ?></button>
 				</p>
 			</form>
 
@@ -220,7 +220,7 @@ class CBLP_Admin {
 				<?php
 				printf(
 					/* translators: %s: aeron7.com link */
-					wp_kses_post( __( 'Category Based Local Pickup for WooCommerce &mdash; a free, open-source extension by %s.', 'category-based-local-pickup-for-woocommerce' ) ),
+					wp_kses_post( __( 'Category Based Local Pickup for WooCommerce &mdash; a free, open-source extension by %s.', 'category-based-local-pickup' ) ),
 					'<a href="https://aeron7.com" target="_blank" rel="noopener noreferrer"><strong>aeron7.com</strong></a>'
 				);
 				?>

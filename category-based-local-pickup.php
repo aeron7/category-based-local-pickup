@@ -1,7 +1,7 @@
 <?php
 /**
  * Plugin Name:       Category Based Local Pickup for WooCommerce
- * Plugin URI:        https://github.com/aeron7/category-based-local-pickup-for-woocommerce
+ * Plugin URI:        https://github.com/aeron7/category-based-local-pickup
  * Description:       Show or hide each WooCommerce Local Pickup location based on the product categories in the cart. Perfect when different pickup points only stock certain categories (brands, publishers, suppliers). A cart is offered a pickup point only when its items qualify.
  * Version:           1.0.0
  * Requires at least: 6.2
@@ -10,7 +10,7 @@
  * Author URI:        https://aeron7.com
  * License:           GPL-2.0-or-later
  * License URI:       https://www.gnu.org/licenses/gpl-2.0.html
- * Text Domain:       category-based-local-pickup-for-woocommerce
+ * Text Domain:       category-based-local-pickup
  * Domain Path:       /languages
  * WC requires at least: 7.0
  * WC tested up to:   10.7
@@ -43,7 +43,7 @@ function cblp_init() {
 	}
 
 	load_plugin_textdomain(
-		'category-based-local-pickup-for-woocommerce',
+		'category-based-local-pickup',
 		false,
 		dirname( plugin_basename( __FILE__ ) ) . '/languages'
 	);
@@ -61,7 +61,7 @@ add_action( 'plugins_loaded', 'cblp_init' );
  */
 function cblp_missing_wc_notice() {
 	echo '<div class="notice notice-error"><p>';
-	echo esc_html__( 'Category Based Local Pickup for WooCommerce requires WooCommerce to be installed and active.', 'category-based-local-pickup-for-woocommerce' );
+	echo esc_html__( 'Category Based Local Pickup for WooCommerce requires WooCommerce to be installed and active.', 'category-based-local-pickup' );
 	echo '</p></div>';
 }
 
@@ -80,6 +80,6 @@ add_action( 'before_woocommerce_init', function () {
  */
 add_filter( 'plugin_action_links_' . plugin_basename( __FILE__ ), function ( $links ) {
 	$url = admin_url( 'admin.php?page=cblp-settings' );
-	array_unshift( $links, '<a href="' . esc_url( $url ) . '">' . esc_html__( 'Settings', 'category-based-local-pickup-for-woocommerce' ) . '</a>' );
+	array_unshift( $links, '<a href="' . esc_url( $url ) . '">' . esc_html__( 'Settings', 'category-based-local-pickup' ) . '</a>' );
 	return $links;
 } );
