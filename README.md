@@ -1,5 +1,7 @@
 # Category Based Local Pickup for WooCommerce
 
+A free, open-source plugin by **[aeron7.com](https://aeron7.com)**.
+
 Show or hide each WooCommerce **Local Pickup** location based on the **product categories** in the cart.
 
 WooCommerce's built-in Local Pickup shows every pickup location to every shopper. Real stores often have pickup points that only stock certain categories — one warehouse per brand, publisher, supplier or department. This plugin maps each pickup location to a set of product categories and only offers a location when the cart qualifies.

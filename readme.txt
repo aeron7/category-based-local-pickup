@@ -8,9 +8,11 @@ Stable tag: 1.0.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
-Show or hide each WooCommerce Local Pickup location based on the product categories in the cart.
+Show or hide each WooCommerce Local Pickup location based on the product categories in the cart. A free, open-source plugin by aeron7.com.
 
 == Description ==
+
+A free, open-source plugin by [aeron7.com](https://aeron7.com).
 
 WooCommerce's built-in **Local Pickup** shows every pickup location to every shopper. But real stores often have pickup points that only stock certain categories — one warehouse per brand, publisher, supplier or department.
 

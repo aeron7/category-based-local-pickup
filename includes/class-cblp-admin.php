@@ -107,7 +107,6 @@ class CBLP_Admin {
 		update_option( CBLP_OPTION_RULES, $rules );
 		update_option( CBLP_OPTION_DEBUG, isset( $_POST['cblp_debug'] ) ? 'yes' : 'no' );
 
-		add_settings_error( 'cblp', 'cblp_saved', __( 'Pickup category rules saved.', 'category-based-local-pickup-for-woocommerce' ), 'updated' );
 		set_transient( 'cblp_saved_notice', 1, 30 );
 	}
 
@@ -215,6 +214,17 @@ class CBLP_Admin {
 					<button type="submit" name="cblp_submit" value="1" class="button button-primary"><?php esc_html_e( 'Save changes', 'category-based-local-pickup-for-woocommerce' ); ?></button>
 				</p>
 			</form>
+
+			<hr style="margin-top:28px;">
+			<p class="description">
+				<?php
+				printf(
+					/* translators: %s: aeron7.com link */
+					wp_kses_post( __( 'Category Based Local Pickup for WooCommerce &mdash; a free, open-source extension by %s.', 'category-based-local-pickup-for-woocommerce' ) ),
+					'<a href="https://aeron7.com" target="_blank" rel="noopener noreferrer"><strong>aeron7.com</strong></a>'
+				);
+				?>
+			</p>
 		</div>
 		<?php
 	}

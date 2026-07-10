@@ -6,8 +6,8 @@
  * Version:           1.0.0
  * Requires at least: 6.2
  * Requires PHP:      7.4
- * Author:            Dexter
- * Author URI:        https://github.com/aeron7
+ * Author:            aeron7
+ * Author URI:        https://aeron7.com
  * License:           GPL-2.0-or-later
  * License URI:       https://www.gnu.org/licenses/gpl-2.0.html
  * Text Domain:       category-based-local-pickup-for-woocommerce
